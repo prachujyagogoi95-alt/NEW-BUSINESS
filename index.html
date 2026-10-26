@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Bazar | Laptops</title>
+<style>
+:root{--blue:#2457e6;--ink:#152238;--muted:#68758a;--line:#e5eaf2;--bg:#f5f8ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;background:#ffffffee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:5}
+nav{max-width:1100px;margin:auto;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:22px;font-weight:900}.logo span{color:var(--blue)}
+.links{display:flex;gap:20px;font-size:14px}
+.btn{display:inline-block;padding:12px 16px;border:0;border-radius:9px;background:var(--blue);color:white;font-weight:bold;text-align:center}
+.outline{background:white;border:1px solid var(--line);color:var(--ink)}
+.instagram{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:white}
+.hero{background:radial-gradient(circle at 85% 20%,#dce7ff,transparent 35%),var(--bg);padding:65px 20px}
+.hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
+.eyebrow{color:var(--blue);font-size:12px;font-weight:bold;letter-spacing:2px}
+h1{font-size:clamp(38px,6vw,62px);line-height:1.05;letter-spacing:-2px;margin:15px 0}
+h1 span{color:var(--blue)}
+p{line-height:1.7;color:var(--muted)}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}
+.hero-art{font-size:150px;text-align:center;background:#e4ebff;border-radius:35px;padding:35px 10px}
+.stats{display:flex;gap:25px;flex-wrap:wrap}.stats strong{display:block;font-size:20px}.stats small{color:var(--muted)}
+section{scroll-margin-top:80px}
+.section{max-width:1100px;margin:auto;padding:60px 20px}
+.heading{display:flex;justify-content:space-between;align-items:end;gap:15px;flex-wrap:wrap}
+h2{font-size:32px;margin:8px 0}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
+input,select{padding:12px;border:1px solid var(--line);border-radius:9px;min-width:0}
+#search{flex:1;min-width:200px}
+.tabs{display:flex;gap:7px;flex-wrap:wrap}
+.tab{padding:11px 14px;background:white;border:1px solid var(--line);border-radius:9px}
+.tab.active{background:var(--blue);color:white}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:.2s;background:white}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #15223815}
+.laptop{height:175px;background:linear-gradient(135deg,#e6edff,#f8faff);display:grid;place-items:center;position:relative;font-size:80px}
+.tag{position:absolute;top:12px;left:12px;background:white;border-radius:6px;padding:7px;font-size:10px;font-weight:bold}
+.info{padding:17px}
+.info h3{margin:7px 0}
+.specs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.specs span{font-size:11px;padding:6px;background:#f2f5fa;border-radius:5px}
+.price{font-size:23px;font-weight:900}
+.old{font-size:12px;color:#9aa4b4;text-decoration:line-through;margin-left:6px}
+.actions{display:flex;gap:8px;margin-top:15px}
+.actions .btn{flex:1;padding:10px 6px;font-size:12px}
+.whatsapp{background:#168454}
+#empty{text-align:center;padding:30px;display:none}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.feature{border:1px solid var(--line);border-radius:12px;padding:20px}
+.feature b{display:block;margin:10px 0}
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+form{display:grid;gap:12px}
+form input,form select{width:100%;background:white}
+footer{background:#12213b;color:white;padding:25px 20px;text-align:center}
+footer p{color:#c6d0e4}
+.menu{display:none}
+#savedCount{display:inline-block;background:#eef3ff;color:var(--blue);padding:3px 7px;border-radius:15px}
+@media(max-width:750px){
+ .hero-inner,.contact-grid{grid-template-columns:1fr}
+ .hero-art{font-size:100px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .features{grid-template-columns:1fr}
+ .links{display:none;position:absolute;top:65px;left:0;right:0;padding:20px;background:white;flex-direction:column;border-bottom:1px solid var(--line)}
+ .links.open{display:flex}.menu{display:block}
+}
+@media(max-width:480px){
+ .grid{grid-template-columns:1fr}
+ .hero{padding:45px 16px}
+ h1{font-size:42px}
+ .section{padding:45px 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+  <a class="logo" href="#">Computer <span>Bazar.</span></a>
+  <div class="links" id="links">
+    <a href="#home">Home</a>
+    <a href="#products">Laptops</a>
+    <a href="#about">Why Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div>
+    <button class="btn outline menu" id="menu" aria-label="Toggle menu">☰</button>
+    <a class="btn" href="#products">Explore Laptops</a>
+  </div>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="hero-inner">
+  <div>
+    <div class="eyebrow">YOUR LOCAL LAPTOP STORE</div>
+    <h1>Find the right laptop. <span>Spend smarter.</span></h1>
+    <p>Explore new and pre-owned laptops for students, professionals, creators and gamers. Browse our catalogue and message us for availability and current prices.</p>
+    <div class="hero-buttons">
+      <a class="btn" href="#products">Browse Laptops →</a>
+      <a class="btn outline" href="#contact">Ask a Question</a>
+      <a class="btn instagram" href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/" target="_blank" rel="noopener noreferrer">◎ Follow on Instagram</a>
+    </div>
+    <div class="stats">
+      <div><strong>New & Used</strong><small>Options for different budgets</small></div>
+      <div><strong>Easy Enquiry</strong><small>Contact us on WhatsApp</small></div>
+      <div><strong>Local Support</strong><small>Talk to our team</small></div>
+    </div>
+  </div>
+  <div class="hero-art" aria-label="Laptop illustration">💻</div>
+</div>
+</section>
+
+<section class="section" id="products">
+<div class="heading">
+  <div><div class="eyebrow">OUR CATALOGUE</div><h2>Find your next laptop</h2>
+  <p>Sample listings for demonstration. Confirm actual stock and pricing with the shop.</p></div>
+  <button class="btn outline" id="showSaved">♡ Shortlist <span id="savedCount">0</span></button>
+</div>
+
+<div class="filters">
+  <input id="search" placeholder="Search brand, model or specs..." aria-label="Search laptops">
+  <select id="sort" aria-label="Sort laptops">
+    <option value="featured">Featured</option>
+    <option value="low">Price: low to high</option>
+    <option value="high">Price: high to low</option>
+  </select>
+  <div class="tabs">
+    <button class="tab active" data-filter="all">All</button>
+    <button class="tab" data-filter="new">New</button>
+    <button class="tab" data-filter="used">Pre-owned</button>
+  </div>
+</div>
+
+<p id="count"></p>
+<div class="grid" id="grid"></div>
+<div id="empty">No laptops found. Try another search.</div>
+</section>
+
+<section class="section" id="about">
+<div class="eyebrow">WHY COMPUTER BAZAR</div>
+<h2>Simple shopping. Helpful advice.</h2>
+<p>Choosing a laptop should be easy. Tell us your budget and what you need it for, and ask our team about suitable options.</p>
+<div class="features">
+  <div class="feature"><span>💰</span><b>Options for your budget</b><p>Browse different price ranges, including pre-owned models.</p></div>
+  <div class="feature"><span>💬</span><b>Quick enquiries</b><p>Ask about specifications, stock and prices directly on WhatsApp.</p></div>
+  <div class="feature"><span>💻</span><b>Compare specifications</b><p>Review processor, memory and storage before deciding.</p></div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="section contact-grid">
+  <div><div class="eyebrow">GET IN TOUCH</div><h2>Let's find your laptop.</h2>
+    <p>Tell us your budget and intended use. We'll open WhatsApp with your enquiry ready to send.</p>
+    <p><b>WhatsApp:</b> +91-00000-00000<br>
+    <b>Instagram:</b> @YOUR_INSTAGRAM_USERNAME<br>
+    <b>Location:</b> Add your shop address here</p>
+    <a class="btn instagram" href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/" target="_blank" rel="noopener noreferrer">◎ Visit Instagram</a>
+  </div>
+  <form id="contactForm">
+    <input id="customerName" placeholder="Your name" required>
+    <select id="budget" required>
+      <option value="">Select your budget</option>
+      <option>Under ₹15,000</option><option>₹15,000–₹25,000</option>
+      <option>₹25,000–₹40,000</option><option>₹40,000–₹60,000</option>
+      <option>₹60,000+</option>
+    </select>
+    <select id="useCase" required>
+      <option value="">What will you use it for?</option>
+      <option>Study and everyday use</option><option>Office and business</option>
+      <option>Programming</option><option>Gaming</option><option>Editing and design</option>
+    </select>
+    <select id="preference">
+      <option>Either new or pre-owned</option><option>New only</option><option>Pre-owned only</option>
+    </select>
+    <button class="btn" type="submit">Send Enquiry on WhatsApp ↗</button>
+  </form>
+</div>
+</section>
+</main>
+
+<footer>
+  <strong>Computer Bazar</strong>
+  <p>New & pre-owned laptops. Find an option that fits your needs.</p>
+  <small>© <span id="year"></span> Computer Bazar. All rights reserved.</small>
+</footer>
+
+<script>
+// IMPORTANT: Replace this with the shop's WhatsApp number.
+// Use country code and digits only; do not include + or spaces.
+const WHATSAPP_NUMBER = "910000000000";
+const laptops = [
+ {id:1,brand:"Lenovo",model:"IdeaPad Slim 3",condition:"new",price:38990,cpu:"Core i5",ram:"16 GB RAM",storage:"512 GB SSD",tags:"student office study"},
+ {id:2,brand:"Dell",model:"Latitude 5420",condition:"used",price:22990,cpu:"Core i5 11th Gen",ram:"16 GB RAM",storage:"512 GB SSD",tags:"business coding office"},
+ {id:3,brand:"HP",model:"Pavilion 15",condition:"new",price:54990,cpu:"Core i5",ram:"16 GB RAM",storage:"512 GB SSD",tags:"study editing office"},
+ {id:4,brand:"Lenovo",model:"ThinkPad T480",condition:"used",price:15990,cpu:"Core i5 8th Gen",ram:"8 GB RAM",storage:"256 GB SSD",tags:"budget student coding"},
+ {id:5,brand:"ASUS",model:"TUF Gaming F15",condition:"new",price:74990,cpu:"Core i5",ram:"16 GB RAM",storage:"512 GB SSD",tags:"gaming editing"},
+ {id:6,brand:"Acer",model:"Aspire 5",condition:"used",price:18990,cpu:"Core i5 10th Gen",ram:"8 GB RAM",storage:"512 GB SSD",tags:"student office coding"},
+ {id:7,brand:"Apple",model:"MacBook Air M1",condition:"used",price:42990,cpu:"Apple M1",ram:"8 GB RAM",storage:"256 GB SSD",tags:"design coding editing"},
+ {id:8,brand:"HP",model:"EliteBook 840 G8",condition:"used",price:29990,cpu:"Core i5 11th Gen",ram:"16 GB RAM",storage:"512 GB SSD",tags:"business premium"},
+ {id:9,brand:"MSI",model:"Thin 15",condition:"new",price:62990,cpu:"Core i5",ram:"16 GB RAM",storage:"512 GB SSD",tags:"gaming creator"}
+];
+
+let filter = "all";
+let saved = [];
+try { saved = JSON.parse(localStorage.getItem("cb-saved") || "[]"); } catch(e) {}
+
+const grid = document.getElementById("grid");
+const money = n => "₹" + n.toLocaleString("en-IN");
+const wa = message => "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+
+function render(){
+  const term = document.getElementById("search").value.toLowerCase().trim();
+  let list = laptops.filter(p =>
+    (filter === "all" || p.condition === filter) &&
+    [p.brand,p.model,p.cpu,p.ram,p.storage,p.tags,p.condition].join(" ").toLowerCase().includes(term)
+  );
+
+  const sort = document.getElementById("sort").value;
+  if(sort === "low") list.sort((a,b)=>a.price-b.price);
+  if(sort === "high") list.sort((a,b)=>b.price-a.price);
+
+  grid.innerHTML = list.map(p => `
+    <article class="card">
+      <div class="laptop">
+        <span class="tag">${p.condition === "new" ? "BRAND NEW" : "PRE-OWNED"}</span>
+        💻
+      </div>
+      <div class="info">
+        <small>${p.brand.toUpperCase()}</small>
+        <h3>${p.model}</h3>
+        <div class="specs"><span>${p.cpu}</span><span>${p.ram}</span><span>${p.storage}</span></div>
+        <div class="price">${money(p.price)}</div>
+        <div class="actions">
+          <button class="btn outline" data-save="${p.id}">${saved.includes(p.id) ? "♥ Saved" : "♡ Save"}</button>
+          <a class="btn whatsapp" href="${wa("Hi Computer Bazar! I'm interested in the " + p.brand + " " + p.model + ". Listed demo price: " + money(p.price) + ". Please confirm availability, condition and final price.")}" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+        </div>
+      </div>
+    </article>`).join("");
+
+  document.getElementById("count").textContent = `Showing ${list.length} of ${laptops.length} laptops`;
+  document.getElementById("empty").style.display = list.length ? "none" : "block";
+  document.getElementById("savedCount").textContent = saved.length;
+}
+
+document.getElementById("search").addEventListener("input",render);
+document.getElementById("sort").addEventListener("change",render);
+document.querySelectorAll(".tab").forEach(btn => btn.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  filter = btn.dataset.filter;
+  render();
+}));
+
+grid.addEventListener("click",e=>{
+  const btn = e.target.closest("[data-save]");
+  if(!btn) return;
+  const id = Number(btn.dataset.save);
+  saved = saved.includes(id) ? saved.filter(x=>x!==id) : [...saved,id];
+  try { localStorage.setItem("cb-saved",JSON.stringify(saved)); } catch(e) {}
+  render();
+});
+
+document.getElementById("showSaved").addEventListener("click",()=>{
+  const list = laptops.filter(p=>saved.includes(p.id));
+  if(!list.length){alert("Your shortlist is empty. Click Save on a laptop first.");return;}
+  const message = "Hi Computer Bazar! Please share details for these laptops:\n" +
+    list.map(p=>p.brand+" "+p.model+" — "+money(p.price)).join("\n");
+  window.open(wa(message),"_blank","noopener");
+});
+
+document.getElementById("contactForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name = document.getElementById("customerName").value.trim();
+  const budget = document.getElementById("budget").value;
+  const use = document.getElementById("useCase").value;
+  const preference = document.getElementById("preference").value;
+  const message = `Hi Computer Bazar! My name is ${name}.\nBudget: ${budget}\nMain use: ${use}\nPreference: ${preference}.\nPlease recommend suitable laptops.`;
+  window.open(wa(message),"_blank","noopener");
+});
+
+document.getElementById("menu").addEventListener("click",()=>{
+  document.getElementById("links").classList.toggle("open");
+});
+document.querySelectorAll("#links a").forEach(a=>a.addEventListener("click",()=>{
+  document.getElementById("links").classList.remove("open");
+}));
+document.getElementById("year").textContent = new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
